@@ -39,7 +39,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDYR_-1sejvK5UcY7OWnlAQCne_KrLpm1U',
+    apiKey: const String.fromEnvironment('FIREBASE_API_KEY', defaultValue: 'REPLACE_ME'),
     appId: '1:109013588296:web:1301017e8838342497bb7d', // Placeholder/Guessed based on pattern or need user input
     messagingSenderId: '109013588296',
     projectId: 'game-edukasi-b5995',
@@ -48,7 +48,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDYR_-1sejvK5UcY7OWnlAQCne_KrLpm1U',
+    apiKey: const String.fromEnvironment('FIREBASE_API_KEY', defaultValue: 'REPLACE_ME'),
     appId: '1:109013588296:android:adeeb03ab9952c7897bb7d',
     messagingSenderId: '109013588296',
     projectId: 'game-edukasi-b5995',
