@@ -15,13 +15,13 @@ class AudioService {
   bool get isMusicEnabled => _isMusicEnabled;
 
   // Background music file
-  static const String bgMusic = 'audio/Envici November - Original Instrument - Awesome Free Sound Effects.mp3';
+  static const String bgMusic = 'audio/bgm.mp3';
   
   // SFX placeholders (will work when files are added)
-  static const String sfxCorrect = 'audio/correct.mp3';
-  static const String sfxWrong = 'audio/wrong.mp3';
-  static const String sfxClick = 'audio/click.mp3';
-  static const String sfxWin = 'audio/win.mp3';
+  // static const String sfxCorrect = 'audio/correct.mp3';
+  // static const String sfxWrong = 'audio/wrong.mp3';
+  // static const String sfxClick = 'audio/click.mp3';
+  // static const String sfxWin = 'audio/win.mp3';
 
   Future<void> init() async {
     try {
@@ -38,7 +38,7 @@ class AudioService {
     try {
       if (_musicPlayer.state != PlayerState.playing) {
         await _musicPlayer.play(AssetSource(bgMusic));
-        await _musicPlayer.setVolume(0.5); // 50% volume for background
+        await _musicPlayer.setVolume(1.0); // 100% volume for background
       }
     } catch (e) {
       debugPrint('Error playing background music: $e');
@@ -77,8 +77,16 @@ class AudioService {
   }
   
   // Helpers for common game sounds
-  Future<void> playCorrectSound() async => playSfx(sfxCorrect);
-  Future<void> playWrongSound() async => playSfx(sfxWrong);
-  Future<void> playClickSound() async => playSfx(sfxClick);
-  Future<void> playWinSound() async => playSfx(sfxWin);
+  Future<void> playCorrectSound() async {
+    // await playSfx(sfxCorrect);
+  } 
+  Future<void> playWrongSound() async {
+    // await playSfx(sfxWrong);
+  }
+  Future<void> playClickSound() async {
+    // await playSfx(sfxClick);
+  }
+  Future<void> playWinSound() async {
+    // await playSfx(sfxWin);
+  }
 }

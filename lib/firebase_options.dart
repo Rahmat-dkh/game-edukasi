@@ -38,19 +38,23 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const String _apiKey = String.fromEnvironment('FIREBASE_API_KEY', defaultValue: 'REPLACE_ME');
+
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: const String.fromEnvironment('FIREBASE_API_KEY', defaultValue: 'REPLACE_ME'),
-    appId: '1:109013588296:web:1301017e8838342497bb7d', // Placeholder/Guessed based on pattern or need user input
-    messagingSenderId: '109013588296',
-    projectId: 'game-edukasi-b5995',
-    authDomain: 'game-edukasi-b5995.firebaseapp.com',
-    storageBucket: 'game-edukasi-b5995.appspot.com',
+    apiKey: _apiKey,
+    authDomain: "game-edukasi-80f11.firebaseapp.com",
+    projectId: "game-edukasi-80f11",
+    storageBucket: "game-edukasi-80f11.firebasestorage.app",
+    messagingSenderId: "521444207194",
+    appId: "1:521444207194:web:8822a5e5236bdaa6058663",
+    measurementId: "G-HRSE54X090",
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: const String.fromEnvironment('FIREBASE_API_KEY', defaultValue: 'REPLACE_ME'),
-    appId: '1:109013588296:android:adeeb03ab9952c7897bb7d',
-    messagingSenderId: '109013588296',
-    projectId: 'game-edukasi-b5995',
+    apiKey: _apiKey,
+    appId: '1:521444207194:android:a57ad930de7dbb94058663',
+    messagingSenderId: '521444207194',
+    projectId: 'game-edukasi-80f11',
+    storageBucket: 'game-edukasi-80f11.firebasestorage.app',
   );
 }

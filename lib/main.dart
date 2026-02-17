@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'core/theme/app_theme.dart';
@@ -9,15 +11,16 @@ import 'presentation/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  FirebaseFirestore.setLoggingEnabled(true);
   
-  // Initialize Audio Service
-  await AudioService().init();
-  // Start Background Music
-  AudioService().playBackgroundMusic();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    FirebaseAnalytics.instance;
+    FirebaseFirestore.setLoggingEnabled(true);
+  } catch (e) {
+    print('Firebase initialization error: $e');
+  }
 
   runApp(
     MultiProvider(

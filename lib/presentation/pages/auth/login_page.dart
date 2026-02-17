@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../main_screen.dart';
-import '../../../core/utils/audio_manager.dart';
+import '../../../core/services/audio_service.dart';
 import 'register_page.dart';
 import '../../../data/services/auth_service.dart';
 
@@ -21,15 +21,21 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    // Initialize and play music
-    AudioManager().init().then((_) {
-      AudioManager().playBGM();
-    });
+    _initAudio();
+  }
+
+  Future<void> _initAudio() async {
+    try {
+      await AudioService().init();
+      await AudioService().playBackgroundMusic();
+    } catch (e) {
+      debugPrint('Audio initialization error: $e');
+    }
   }
 
   Future<void> _login() async {
     if (_formKey.currentState!.validate()) {
-      AudioManager().playClickSound();
+      AudioService().playClickSound();
       
       // Show Loading
       showDialog(

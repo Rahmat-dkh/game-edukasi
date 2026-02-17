@@ -14,22 +14,33 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    print('SplashScreen: initState called');
     _navigateToLogin();
   }
 
   void _navigateToLogin() async {
-    await Future.delayed(const Duration(milliseconds: 3500));
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => const LoginPage(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-          transitionDuration: const Duration(milliseconds: 500),
-        ),
-      );
+    try {
+      print('SplashScreen: Starting navigation timer');
+      await Future.delayed(const Duration(milliseconds: 3500));
+      print('SplashScreen: Timer completed, navigating to LoginPage');
+      
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) => const LoginPage(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
+            transitionDuration: const Duration(milliseconds: 500),
+          ),
+        );
+        print('SplashScreen: Navigation completed');
+      } else {
+        print('SplashScreen: Widget not mounted, navigation cancelled');
+      }
+    } catch (e) {
+      print('SplashScreen: Error during navigation: $e');
     }
   }
 
